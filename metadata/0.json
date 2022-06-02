@@ -1,0 +1,25 @@
+{
+  "name": "Token Metadata",
+  "description": "Celebrating the 1st Anniversary of the CoW Protocol. This is a special badge awarded to all CoW Protocol users who have shared the celebration on Twitter. It resembles a watch dial displaying the different variant of logos throughout the first year. As well as the CoW catching up with a horned creature.",
+  "image": "https://cloudflare-ipfs.com/ipfs/QmQ3YoqbyUrwArmS1UtyWKwfbxTbsWdyJrE8TMNYAcJ9dw",
+  "external_url": "https://art.cow.fi/nft/0",
+  "background_color": "000000",
+  "decimals": 0,
+  "symbol": "1YEAR",
+  "attributes": [
+    {
+      "display_type": "boost_percentage", 
+      "trait_type": "CoW Powers Increase", 
+      "value": 100
+    }, 
+    {
+      "display_type": "date", 
+      "trait_type": "created", 
+      "value": 1654168065
+    },
+    {
+      "trait_type": "Artist", 
+      "value": "fairlight.eth"
+    }
+  ]
+}

@@ -1,24 +1,18 @@
 // SPDX-License-Identifier: GNU General Public License v3.0
 pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract CoWCollection is Initializable, ERC1155Upgradeable, OwnableUpgradeable, PausableUpgradeable, ERC1155SupplyUpgradeable {
-    /// @custom:oz-upgrades-unsafe-allow constructor
-    constructor() {
-        _disableInitializers();
-    }
+contract CoWCollection is ERC1155, Ownable, Pausable, ERC1155Supply {
+    string public name = "CoW Protocol Art Collectibles";
+    string public symbol = "CPA";
 
-    function initialize() initializer public {
-        __ERC1155_init("");
-        __Ownable_init();
-        __Pausable_init();
-        __ERC1155Supply_init();
-    }
+    constructor() ERC1155("https://art.cow.fi/metadata/{id}.json") {}
 
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);
@@ -31,11 +25,12 @@ contract CoWCollection is Initializable, ERC1155Upgradeable, OwnableUpgradeable,
     function unpause() public onlyOwner {
         _unpause();
     }
-
+  
     function mint(address account, uint256 id, uint256 amount, bytes memory data)
         public
         onlyOwner
     {
+        require(amount > 0, "amount can't be 0");
         _mint(account, id, amount, data);
     }
 
@@ -49,7 +44,7 @@ contract CoWCollection is Initializable, ERC1155Upgradeable, OwnableUpgradeable,
     function _beforeTokenTransfer(address operator, address from, address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)
         internal
         whenNotPaused
-        override(ERC1155Upgradeable, ERC1155SupplyUpgradeable)
+        override(ERC1155, ERC1155Supply)
     {
         super._beforeTokenTransfer(operator, from, to, ids, amounts, data);
     }
