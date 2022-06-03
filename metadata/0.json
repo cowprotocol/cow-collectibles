@@ -1,5 +1,5 @@
 {
-  "name": "Token Metadata",
+  "name": "CoW Protocol 1st Anniversary",
   "description": "Celebrating the 1st Anniversary of the CoW Protocol. This is a special badge awarded to all CoW Protocol users who have shared the celebration on Twitter. It resembles a watch dial displaying the different variant of logos throughout the first year. As well as the CoW catching up with a horned creature.",
   "image": "https://cloudflare-ipfs.com/ipfs/QmQ3YoqbyUrwArmS1UtyWKwfbxTbsWdyJrE8TMNYAcJ9dw",
   "external_url": "https://art.cow.fi/nft/0",
@@ -14,8 +14,16 @@
     }, 
     {
       "display_type": "date", 
-      "trait_type": "created", 
-      "value": 1654168065
+      "trait_type": "Created", 
+      "value": 1654163745739
+    },
+    {
+      "trait_type": "Chain", 
+      "value": "Gnosis Chain"
+    },
+    {
+      "trait_type": "Issuer", 
+      "value": "CowDAO"
     },
     {
       "trait_type": "Artist", 
